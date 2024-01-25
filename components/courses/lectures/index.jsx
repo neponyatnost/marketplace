@@ -1,4 +1,4 @@
-export default function CoursesLectures() {
+export default function CoursesLectures({ isLocked }) {
   const lectures = [
     'How to init App',
     'How to get a help',
@@ -47,8 +47,14 @@ export default function CoursesLectures() {
                         </div>
                       </td>
                       <td className='px-6 py-4 whitespace-nowrap'>
-                        <span className='px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800'>
-                          Unlocked
+                        <span
+                          className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${
+                            isLocked
+                              ? 'bg-red-100 text-red-800'
+                              : 'bg-green-100 text-green-800'
+                          }`}
+                        >
+                          {isLocked ? 'Locked' : 'Unlocked'}
                         </span>
                       </td>
                       <td className='px-6 py-4 whitespace-nowrap text-right text-sm font-medium'>
@@ -56,7 +62,7 @@ export default function CoursesLectures() {
                           href='#'
                           className='text-indigo-600 hover:text-indigo-900'
                         >
-                          Play
+                          {isLocked ? 'Buy' : 'Play'}
                         </a>
                       </td>
                     </tr>
